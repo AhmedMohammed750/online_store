@@ -1,7 +1,10 @@
 // Packages
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:online_store_app/presentation/screens/welcome/verif.dart';
+import 'package:online_store_app/data/firebase.dart';
+
 
 // Online Store App
 import 'online_store_app.dart';
@@ -12,7 +15,17 @@ import 'online_store_app.dart';
 
 Future <void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  
+  await Firebase.initializeApp();
+  
+
+  if (user==null) {
+    islogin=false;
+    
+  }
+  else{
+    islogin=true;
+  }
 
  
   runApp(const OnlineStoreApp() );

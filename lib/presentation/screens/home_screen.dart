@@ -1,4 +1,5 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +15,13 @@ import '../widgets/home_body_widget.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+ 
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
+
 
 class _HomeScreenState extends State<HomeScreen> {
   var colo = 1;
@@ -38,6 +43,19 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/2.jpg',
     'assets/3.jpg',
   ];
+  @override
+  getuser(){
+    var user=FirebaseAuth.instance.currentUser;
+
+
+
+  }
+
+  void initState() {
+    getuser();
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async{
+              await FirebaseAuth.instance.signOut();
+
               navigateAndFinish(context, LoginScreen());
             },
             icon: const Icon(Icons.login_rounded),

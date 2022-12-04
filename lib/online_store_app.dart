@@ -1,6 +1,10 @@
 // Packages
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:online_store_app/data/firebase.dart';
+import 'package:online_store_app/main.dart';
+import 'package:online_store_app/presentation/screens/home_screen.dart';
 import 'package:sizer/sizer.dart';
 
 // Controllers
@@ -9,6 +13,13 @@ import 'package:online_store_app/presentation/controllers/locale/locale.dart';
 
 // Screens
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
+
+
+
+
+
+
+
 
 class OnlineStoreApp extends StatelessWidget {
   const OnlineStoreApp({Key? key}) : super(key: key);
@@ -19,10 +30,11 @@ class OnlineStoreApp extends StatelessWidget {
 
     return Sizer(builder: (context, orientation, deviceType) {
       return GetMaterialApp(
+
         locale: Get.deviceLocale,
         translations: Locale(),
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home:islogin==false ?LoginScreen():HomeScreen(),
       );
     });
   }

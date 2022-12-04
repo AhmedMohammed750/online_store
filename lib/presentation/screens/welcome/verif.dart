@@ -20,8 +20,10 @@ class verify extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             child: Column(
               
+              
                
               children: [
+                SizedBox(height: 20,),
               CircleAvatar(
                         maxRadius: 90.0,
                         child: Image.asset(

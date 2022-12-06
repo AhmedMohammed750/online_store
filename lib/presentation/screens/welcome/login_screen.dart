@@ -81,22 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
           print('not verfied');
         }
       }
-    } else {
-      // ignore: avoid_single_cascade_in_expression_statements
-      AwesomeDialog(
-        context: context,
-        animType: AnimType.scale,
-        dialogType: DialogType.info,
-        body: Center(
-          child: Text(
-            'your account is not activated go to email for activating it ',
-            style: TextStyle(fontStyle: FontStyle.italic),
-          ),
-        ),
-        title: 'Error',
-        btnOkOnPress: () {},
-      )..show();
-    }
+    } 
   }
 
   @override

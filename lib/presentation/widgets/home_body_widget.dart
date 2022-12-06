@@ -71,7 +71,7 @@ class HomeBodyWidget extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: 5.sp,
+                                  fontSize: 15.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -89,7 +89,7 @@ class HomeBodyWidget extends StatelessWidget {
             titlePosition: GFPosition.start,
             showOverlayImage: true,
             imageOverlay: const AssetImage(
-              'assets/6.jpg',
+              'assets/7.webp',
             ),
             title: GFListTile(
               titleText: 'MSI Gaming laptop',
@@ -104,8 +104,9 @@ class HomeBodyWidget extends StatelessWidget {
           ),
           GFCard(
             boxFit: BoxFit.contain,
-            titlePosition: GFPosition.start,
+            titlePosition: GFPosition.end,
             showOverlayImage: true,
+            showImage: true,
             imageOverlay: const AssetImage(
               'assets/5.webp',
             ),
@@ -123,7 +124,7 @@ class HomeBodyWidget extends StatelessWidget {
           ),
           GFCard(
             boxFit: BoxFit.contain,
-            titlePosition: GFPosition.start,
+            titlePosition: GFPosition.end,
             showOverlayImage: true,
             imageOverlay: const AssetImage(
               'assets/4.jpg',
@@ -131,6 +132,7 @@ class HomeBodyWidget extends StatelessWidget {
             title: GFListTile(
               titleText: 'Iphone 14 pro max',
               subTitleText: 'price: 1500 \$',
+              
               icon: IconButton(
                   onPressed: () {},
                   icon: const Icon(
@@ -139,23 +141,19 @@ class HomeBodyWidget extends StatelessWidget {
                   )),
             ),
           ),
-          GFCard(
+          const GFCard(
             boxFit: BoxFit.contain,
-            titlePosition: GFPosition.start,
+            titlePosition: GFPosition.end,
             showOverlayImage: true,
-            imageOverlay: const AssetImage(
-              'assets/1.png',
+           
+            imageOverlay: AssetImage(
+              'assets/6.jpg',
             ),
             title: GFListTile(
               titleText: 'logitech mouse',
               subTitleText: 'price: 7 IQD',
-              icon: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.shopping_cart,
-                  color: Color.fromARGB(255, 2, 32, 56),
-                ),
-              ),
+              
+              
             ),
           ),
         ],

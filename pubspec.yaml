@@ -54,6 +54,7 @@ dependencies:
   firebase_analytics: ^10.0.6
   firebase_messaging: ^14.1.2
   awesome_dialog: ^3.0.2
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:

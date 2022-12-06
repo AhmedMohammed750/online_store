@@ -1,9 +1,12 @@
 
+// ignore_for_file: override_on_non_overriding_member
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getwidget/getwidget.dart';
+import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,6 +14,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/components.dart';
 import '../controllers/locale/locale_controller.dart';
 import '../widgets/home_body_widget.dart';
+import '../widgets/themes.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   }
 
+  @override
   void initState() {
     getuser();
     // TODO: implement initState
@@ -67,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onPressed: () async{
               await FirebaseAuth.instance.signOut();
 
+              // ignore: use_build_context_synchronously
               navigateAndFinish(context, LoginScreen());
             },
             icon: const Icon(Icons.login_rounded),
@@ -74,7 +81,11 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.search),
-          )
+          ),
+          IconButton(onPressed:(){
+             ThemeService().changeTheme();
+   
+          }, icon:Icon(Icons.dark_mode))
         ],
         // ignore: prefer_const_constructors
         backgroundColor: Color.fromARGB(255, 2, 32, 56),
@@ -141,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                    MaterialPageRoute(builder: (context) =>  Profile()));
               },
             ),
             ListTile(

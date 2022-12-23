@@ -44,21 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   final List<String> imgList = [
-    'assets/1.png',
-    'assets/2.jpg',
-    'assets/3.jpg',
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F1.png?alt=media&token=09ac34c5-cefc-4f57-802d-84ec7b7f2b95',
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
   ];
   @override
-  getuser(){
-    var user=FirebaseAuth.instance.currentUser;
-
-
-
-  }
+ 
 
   @override
   void initState() {
-    getuser();
+    
     // TODO: implement initState
     super.initState();
   }
@@ -218,7 +213,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: HomeBodyWidget(imgList: imgList),
+      body: 
+      
+      
+      HomeBodyWidget(imgList: imgList),
     );
   }
 }

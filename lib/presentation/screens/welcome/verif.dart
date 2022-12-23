@@ -26,8 +26,8 @@ class verify extends StatelessWidget {
                 SizedBox(height: 20,),
               CircleAvatar(
                         maxRadius: 90.0,
-                        child: Image.asset(
-                          "assets/veify.png",width: 130,
+                        child: Image.network(
+                          "https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fveify.png?alt=media&token=678a45a1-de70-44e1-be0f-5d8d3b0a8da1",width: 130,
                         ),
                       ),
                       const Text('Please verify your email',style:TextStyle(fontSize:25,fontWeight: FontWeight.bold),)

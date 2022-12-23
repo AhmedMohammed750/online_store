@@ -39,7 +39,7 @@ class AdminScreen extends StatelessWidget {
               currentAccountPicture: const GFAvatar(
                 radius: 100.0,
                 backgroundColor: Color.fromARGB(255, 3, 2, 56),
-                backgroundImage: AssetImage("assets/splash.png"),
+                backgroundImage: NetworkImage("https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fadmin.gif?alt=media&token=a53c0b16-ccca-4183-ab04-476ded2226bd"),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,

@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:online_store_app/data/firebase.dart';
 
 
+
 // Online Store App
 import 'online_store_app.dart';
 
@@ -18,6 +19,7 @@ Future <void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   
   await Firebase.initializeApp();
+
    
   
 

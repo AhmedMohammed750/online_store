@@ -1,13 +1,16 @@
 
 // ignore_for_file: override_on_non_overriding_member
 
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:getwidget/getwidget.dart';
+import 'package:online_store_app/presentation/screens/admin_screen.dart';
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
+import 'package:online_store_app/presentation/widgets/bottomnav.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -48,20 +51,28 @@ class _HomeScreenState extends State<HomeScreen> {
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
   ];
-  @override
  
 
-  @override
-  void initState() {
-    
-    // TODO: implement initState
-    super.initState();
-  }
+ 
+
 
   @override
   Widget build(BuildContext context) {
     LocaleController contlor = Get.find();
     return Scaffold(
+      bottomNavigationBar:CurvedNavigationBar(
+        height: 10.h,
+        animationDuration: const Duration(milliseconds: 300),
+       backgroundColor: Colors.white,
+        color:Color.fromARGB(255, 2, 32, 56),
+        items: const [
+        Icon(Icons.home,),
+        Icon(Icons.favorite),
+        Icon(Icons.settings),
+      ],
+
+      ),
+     
       appBar: AppBar(
         actions: [
           IconButton(
@@ -213,10 +224,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: 
+      body: HomeBodyWidget(imgList: imgList)
       
       
-      HomeBodyWidget(imgList: imgList),
+      
     );
   }
 }

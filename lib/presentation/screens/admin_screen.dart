@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:online_store_app/presentation/screens/addproduct.dart';
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -39,7 +40,7 @@ class AdminScreen extends StatelessWidget {
               currentAccountPicture: const GFAvatar(
                 radius: 100.0,
                 backgroundColor: Color.fromARGB(255, 3, 2, 56),
-                backgroundImage: NetworkImage("https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fadmin.gif?alt=media&token=a53c0b16-ccca-4183-ab04-476ded2226bd"),
+                backgroundImage: NetworkImage('https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fimages.png?alt=media&token=57edff90-a804-42bc-9a13-bd39944815bc')
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -58,11 +59,11 @@ class AdminScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('9'.tr,
+              title: Text('Add Product'.tr,
                   style: const TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+                    MaterialPageRoute(builder: (context) => const Addproduct()));
               },
             ),
             ListTile(
@@ -115,7 +116,7 @@ class AdminScreen extends StatelessWidget {
           ],
         ),
       ),
-      body:Container(height:90.h,width: 100.w, child:Image.asset('assets/admin.gif'),) 
+      body:Container(height:90.h,width: 100.w, child:Image.network('https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fadmin.gif?alt=media&token=a53c0b16-ccca-4183-ab04-476ded2226bd'),) 
       
     );
   }

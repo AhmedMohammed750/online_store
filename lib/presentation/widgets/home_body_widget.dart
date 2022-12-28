@@ -123,15 +123,23 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                     return Center(
                         child: Stack(
                       children: [
-                        ClipOval(
-                          child: Image.network(
-                            '${users1[i]['image']}',
-                            height: 40.h,
-                            width: 35.w,
-                             fit: BoxFit.cover,
-                            
-                            
+                        ClipRRect(
+                          
+                          borderRadius: BorderRadius.circular(20),
+                          child: SizedBox.fromSize(size: Size.fromRadius(20.w),
+                          child: Container(color:Colors.blue,
+                            child: Image.network(
+                              '${users1[i]['image']}',
+                              fit: BoxFit.cover,
+                              height: 40.h,
+                              width: 45.w,
+                             
+                             
+                              
+                            ),
                           ),
+
+                          )
                         ),
                         Positioned(
                           bottom: 0.0,
@@ -157,8 +165,6 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                               '${users1[i]['name']}',
                               textAlign: TextAlign.start,
                               style: TextStyle(
-
-                                
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -170,21 +176,19 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                           left: 0.0,
                           right: 0.0,
                           child: Container(
-                            
                             padding: const EdgeInsets.symmetric(
                               vertical: 5.0,
                               horizontal: 10.0,
                             ),
                             child: Text(
-                             '${users1[i]['price']} \$',
-                             textAlign: TextAlign.right,
-                             style: TextStyle(
-                            
-                               color: Colors.red[900],
-                               fontSize: 10.sp,
-                               fontWeight: FontWeight.bold,
-                             ),
-                                                          ),
+                              '${users1[i]['price']} \$',
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                color: Colors.red[900],
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                         ),
                       ],

@@ -1,6 +1,14 @@
+
+import 'dart:io';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
 import 'package:sizer/sizer.dart';
-import 'package:file_picker/file_picker.dart';
+
 
 class Addproduct extends StatefulWidget {
   const Addproduct({super.key});
@@ -10,12 +18,52 @@ class Addproduct extends StatefulWidget {
 }
 
 class _AddproductState extends State<Addproduct> {
+  final TextEditingController nameproduct = TextEditingController();
+  final TextEditingController descriptionproduct = TextEditingController();
+  // ignore: non_constant_identifier_names
+  final TextEditingController Conditionproduct = TextEditingController();
+    final TextEditingController price = TextEditingController();
+
+
   final _formKey = GlobalKey<FormState>();
+  String imageurl='';
+  check()async{
+    
+    var formke=_formKey.currentState;
+    if (formke!.validate()) {
+      formke.save();
+      Map<String,String> DataToSave={
+       'name':nameproduct.text,
+       'description':descriptionproduct.text,
+       'price':price.text,
+       'image':imageurl
+       
+     };
+      FirebaseFirestore.instance.collection('prodects').add(DataToSave);
+    }
+              
+              AwesomeDialog(
+            context: context,
+            animType: AnimType.scale,
+            dialogType: DialogType.info,
+           
+            body: const Center(
+              child: Text(
+                'Has been added',
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ),
+            ),
+            title: 'Erorr Email',
+            btnOkOnPress: () {},
+          ).show();
+
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add Product'),
+        title: const Text('Add Product'),
         centerTitle: true,
       ),
       body: Container(
@@ -37,6 +85,7 @@ class _AddproductState extends State<Addproduct> {
                     height: 4.h,
                   ),
                   TextFormField(
+                    controller: nameproduct,
                     maxLength: 10,
                     keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
@@ -72,6 +121,7 @@ class _AddproductState extends State<Addproduct> {
                     height: 4.h,
                   ),
                   TextFormField(
+                    controller: descriptionproduct,
                     minLines: 7,
                     maxLines: null,
                     keyboardType: TextInputType.text,
@@ -109,6 +159,7 @@ class _AddproductState extends State<Addproduct> {
                     height: 4.h,
                   ),
                   TextFormField(
+                    controller: Conditionproduct,
                     maxLength: 10,
                     keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
@@ -132,27 +183,64 @@ class _AddproductState extends State<Addproduct> {
                       } catch (e) {}
                     },
                   ),
-                  ElevatedButton(
-                      onPressed: () async {
-                        final result = await FilePicker.platform.pickFiles(
-                            allowMultiple: false,
-                            type: FileType.custom,
-                            allowedExtensions: [
-                              'png',
-                              'jpg',
-                             
-                            ]);
-                        if (result == null) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text('No file selected')));
-                              return null;
+                  
+                  TextButton(style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.deepPurple)),
+                    child:const Text('Upload image',style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold),),
+                    onPressed: ()async{
+                      String uniquename=DateTime.now().millisecondsSinceEpoch.toString();
+                     ImagePicker imagePicker=ImagePicker();
+                     XFile? file=await imagePicker.pickImage(source: ImageSource.gallery);
+                     print(file?.path);
+                     if (file==null)return; 
+                       
+                     
+                     //refrence
+                     Reference referenceroRoot=FirebaseStorage.instance.ref();
+                     Reference imagerefdir=referenceroRoot.child('image orginal/');
+                     Reference referenceimageupload=imagerefdir.child(uniquename);
+                     try {
+                      await referenceimageupload.putFile(File(file!.path));
+                       imageurl=await referenceimageupload.getDownloadURL();
+                       print(imageurl);
+                       
+                     } catch (e) {
+                       
+                     }
+                    
+
+
+
+
+                  }, ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  TextFormField(
+                    controller: price,
+                    maxLength: 10,
+                    keyboardType: TextInputType.text,
+                    decoration: const InputDecoration(
+                      icon: Icon(
+                        Icons.price_change_rounded,
+                        color: Colors.blue,
+                      ),
+                      border: OutlineInputBorder(),
+                      hintText: "Price ",
+                      hintStyle: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    validator: (String? value) {
+                      try {
+                        if (value!.isEmpty) {
+                          return 'must not be empty';
                         }
-                        final Path=result.files.single.path;
-                        final pathname=result.files.single.name;
-                        print(Path);
-                        print(pathname);
-                      },
-                      child: Text('Upload Image')),
+                        return null;
+                      } catch (e) {}
+                    },
+                  ),
+                
                   SizedBox(
                     height: 4.h,
                   ),
@@ -168,7 +256,9 @@ class _AddproductState extends State<Addproduct> {
                         child: SizedBox(
                           height: 10.h,
                           child: TextButton(
-                            onPressed: () async {},
+                            onPressed: () async {
+                              check();
+                            },
                             child: const Text(
                               "Add Product",
                               style: TextStyle(
@@ -182,6 +272,7 @@ class _AddproductState extends State<Addproduct> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 5.h,)
                 ],
               ),
             )),

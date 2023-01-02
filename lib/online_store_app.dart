@@ -57,7 +57,7 @@ class _OnlineStoreAppState extends State<OnlineStoreApp> {
         debugShowCheckedModeBanner: false,
       
 
-        home:islogin==false ?LoginScreen():AdminScreen()//HomeScreen(),
+        home:islogin==false ?LoginScreen():HomeScreen(),//AdminScreen()
       );
     });
   }

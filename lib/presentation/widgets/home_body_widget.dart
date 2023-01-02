@@ -3,12 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'package:online_store_app/presentation/screens/productdec.dart';
+import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../data/firebase.dart';
-
 class HomeBodyWidget extends StatefulWidget {
-  HomeBodyWidget({
+  const HomeBodyWidget({
     Key? key,
     required this.imgList,
   }) : super(key: key);
@@ -45,7 +45,6 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
           SizedBox(
@@ -115,6 +114,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
             child: Column(
               children: [
                 GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 2,
                   shrinkWrap: true,
                   crossAxisSpacing: 8.0,
@@ -124,23 +124,30 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                         child: Stack(
                       children: [
                         ClipRRect(
-                          
-                          borderRadius: BorderRadius.circular(20),
-                          child: SizedBox.fromSize(size: Size.fromRadius(20.w),
-                          child: Container(color:Colors.blue,
-                            child: Image.network(
-                              '${users1[i]['image']}',
-                              fit: BoxFit.cover,
-                              height: 40.h,
-                              width: 45.w,
-                             
-                             
-                              
-                            ),
-                          ),
-
-                          )
-                        ),
+                            borderRadius: BorderRadius.circular(20),
+                            child: SizedBox.fromSize(
+                              size: Size.fromRadius(20.w),
+                              child: Container(
+                                color: Colors.blue,
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                               Productdec(users1[i])),
+                                            
+                                    );
+                                  },
+                                  child: Image.network(
+                                    '${users1[i]['image']}',
+                                    fit: BoxFit.cover,
+                                    height: 40.h,
+                                    width: 45.w,
+                                  ),
+                                ),
+                              ),
+                            )),
                         Positioned(
                           bottom: 0.0,
                           left: 0.0,

@@ -8,12 +8,7 @@ import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:sizer/sizer.dart';
 
 class HomeBodyWidget extends StatefulWidget {
-  const HomeBodyWidget({
-    Key? key,
-    required this.imgList,
-  }) : super(key: key);
 
-  final List<String> imgList;
 
   @override
   State<HomeBodyWidget> createState() => _HomeBodyWidgetState();
@@ -21,18 +16,31 @@ class HomeBodyWidget extends StatefulWidget {
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   List users1 = [];
+    final List<String> imgList = [
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fdownload.jpg?alt=media&token=74e51892-3b94-4994-b650-4366fd411f40',
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
+    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
+  ];
 
   getdate() async {
-    CollectionReference userref =
+    try {
+       CollectionReference userref =
         FirebaseFirestore.instance.collection('prodects');
     await userref.where('price').get().then((value) => {
+          // ignore: avoid_function_literals_in_foreach_calls
           value.docs.forEach((element) {
             setState(() {
               users1.add(element.data());
             });
           })
         });
-    print(users1);
+    
+      
+    // ignore: empty_catches
+    } catch (e) {
+      
+    }
+   
   }
 
   @override
@@ -56,7 +64,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                 aspectRatio: 2.0,
                 enlargeCenterPage: true,
               ),
-              items: widget.imgList
+              items: imgList
                   // ignore: avoid_unnecessary_containers
                   .map((item) => Container(
                         child: Container(

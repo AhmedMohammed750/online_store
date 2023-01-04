@@ -8,9 +8,9 @@ import 'package:get/get.dart';
 
 import 'package:getwidget/getwidget.dart';
 import 'package:online_store_app/presentation/screens/admin_screen.dart';
+import 'package:online_store_app/presentation/screens/cartscreen.dart';
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
-import 'package:online_store_app/presentation/widgets/bottomnav.dart';
 import 'package:sizer/sizer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,6 +33,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var colo = 1;
+
   final Uri _url = Uri.parse(
       'https://sites.google.com/view/watereject/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9');
   final Uri _url2 = Uri.parse('mailto:kosayalmansour@gmail.com');
@@ -46,11 +47,15 @@ class _HomeScreenState extends State<HomeScreen> {
     if (!await launchUrl(_url2)) throw 'Could not launch $_url';
   }
 
-  final List<String> imgList = [
-    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F1.png?alt=media&token=09ac34c5-cefc-4f57-802d-84ec7b7f2b95',
-    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
-    'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
+
+      final pages=[
+   HomeBodyWidget(),
+    const Cart()
+
+
   ];
+  int page=0;
+
  
 
  
@@ -67,9 +72,15 @@ class _HomeScreenState extends State<HomeScreen> {
         color:Color.fromARGB(255, 2, 32, 56),
         items: const [
         Icon(Icons.home,),
-        Icon(Icons.favorite),
-        Icon(Icons.settings),
+        Icon(Icons.shopping_cart),
+        
       ],
+      onTap: (index){
+        setState(() {
+          page=index;
+        });
+
+      },
 
       ),
      
@@ -174,6 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 _launchUrl();
               },
+              
             ),
             Column(
               children: [
@@ -224,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      body: HomeBodyWidget(imgList: imgList)
+      body: pages[page]
       
       
       

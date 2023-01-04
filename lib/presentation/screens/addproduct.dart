@@ -5,6 +5,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:sizer/sizer.dart';
@@ -58,6 +59,7 @@ class _AddproductState extends State<Addproduct> {
           ).show();
 
   }
+
   
   @override
   Widget build(BuildContext context) {
@@ -258,6 +260,7 @@ class _AddproductState extends State<Addproduct> {
                           child: TextButton(
                             onPressed: () async {
                               check();
+                              
                             },
                             child: const Text(
                               "Add Product",

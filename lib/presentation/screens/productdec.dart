@@ -3,6 +3,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:online_store_app/data/firebase.dart';
 import 'package:sizer/sizer.dart';
 
 class Productdec extends StatefulWidget {
@@ -14,14 +15,18 @@ class Productdec extends StatefulWidget {
 }
 
 class _ProductdecState extends State<Productdec> {
+     
+
     addprod(){
     Map<String,String> DatatoSave={
        'name':widget.user['name'],
        'price':widget.user['price'],
-       'image':widget.user['image']
+       'image':widget.user['image'],
+       'id':''
        
      };
       FirebaseFirestore.instance.collection('purchases').add(DatatoSave);
+       
        AwesomeDialog(
             context: context,
             animType: AnimType.scale,
@@ -37,6 +42,12 @@ class _ProductdecState extends State<Productdec> {
             btnOkOnPress: () {},
           ).show();
 
+  }
+  @override
+  void initState() {
+
+    // TODO: implement initState
+    super.initState();
   }
 
   @override

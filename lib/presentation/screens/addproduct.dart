@@ -5,7 +5,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+
 import 'package:image_picker/image_picker.dart';
 
 import 'package:sizer/sizer.dart';
@@ -33,6 +33,7 @@ class _AddproductState extends State<Addproduct> {
     var formke=_formKey.currentState;
     if (formke!.validate()) {
       formke.save();
+      // ignore: non_constant_identifier_names
       Map<String,String> DataToSave={
        'name':nameproduct.text,
        'description':descriptionproduct.text,
@@ -102,12 +103,14 @@ class _AddproductState extends State<Addproduct> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    // ignore: body_might_complete_normally_nullable
                     validator: (String? value) {
                       try {
                         if (value!.isEmpty) {
                           return 'must not be empty';
                         }
                         return null;
+                      // ignore: empty_catches
                       } catch (e) {}
                     },
                   ),
@@ -146,6 +149,7 @@ class _AddproductState extends State<Addproduct> {
                           return ' must not be empty';
                         }
                         return null;
+                      // ignore: empty_catches
                       } catch (e) {}
                     },
                   ),
@@ -182,6 +186,7 @@ class _AddproductState extends State<Addproduct> {
                           return ' must not be empty';
                         }
                         return null;
+                      // ignore: empty_catches
                       } catch (e) {}
                     },
                   ),
@@ -205,6 +210,7 @@ class _AddproductState extends State<Addproduct> {
                        imageurl=await referenceimageupload.getDownloadURL();
                        print(imageurl);
                        
+                     // ignore: empty_catches
                      } catch (e) {
                        
                      }

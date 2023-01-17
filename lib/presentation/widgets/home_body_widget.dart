@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
-import 'package:online_store_app/presentation/screens/profilescreen.dart';
+
 import 'package:sizer/sizer.dart';
 
 class HomeBodyWidget extends StatefulWidget {
@@ -26,7 +26,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
     try {
        CollectionReference userref =
         FirebaseFirestore.instance.collection('prodects');
-    await userref.where('price').get().then((value) => {
+    await userref.get().then((value) => {
           // ignore: avoid_function_literals_in_foreach_calls
           value.docs.forEach((element) {
             setState(() {

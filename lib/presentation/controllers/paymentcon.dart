@@ -1,5 +1,3 @@
-import 'package:get/get.dart';
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -16,13 +14,16 @@ class PaymentController extends GetxController {
       if (paymentIntentData != null) {
         await Stripe.instance.initPaymentSheet(
             paymentSheetParameters: SetupPaymentSheetParameters(
-          applePay:null,
-          googlePay: null,
-
+          //applePay: true,
+          //googlePay: true,
+          style: ThemeMode.dark,
+   
           merchantDisplayName: 'Prospects',
           customerId: paymentIntentData!['customer'],
+          
           paymentIntentClientSecret: paymentIntentData!['client_secret'],
           customerEphemeralKeySecret: paymentIntentData!['ephemeralKey'],
+          
         ));
         displayPaymentSheet();
       }
@@ -57,13 +58,14 @@ class PaymentController extends GetxController {
       Map<String, dynamic> body = {
         'amount': calculateAmount(amount),
         'currency': currency,
-        'payment_method_types[]': 'card'
+        'payment_method_types[]': 'card',
+        
       };
       var response = await http.post(
           Uri.parse('https://api.stripe.com/v1/payment_intents'),
           body: body,
           headers: {
-            'Authorization': 'sk_test_51MNZu1BwVsCcYwRbL3xIZwIgjYsYeESYdy8raBb3sIcBLV93jpvtBLrPRpTQju74emT7pN8kbcfHl5vytEqSRJc6008L2tsPwv',
+            'Authorization': 'Bearer sk_test_51MNZu1BwVsCcYwRbL3xIZwIgjYsYeESYdy8raBb3sIcBLV93jpvtBLrPRpTQju74emT7pN8kbcfHl5vytEqSRJc6008L2tsPwv',
             'Content-Type': 'application/x-www-form-urlencoded'
           });
       return jsonDecode(response.body);
@@ -76,4 +78,5 @@ class PaymentController extends GetxController {
     final a = (int.parse(amount)) * 100;
     return a.toString();
   }
+  
 }

@@ -5,9 +5,12 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:get/get.dart';
+
+
 import 'package:http/http.dart' as http;
+
 import 'dart:convert';
 
 
@@ -28,7 +31,7 @@ class _CartState extends State<Cart> {
       FirebaseFirestore.instance.collection('purchases');
   DocumentReference documentReference = FirebaseFirestore.instance.collection('purchases').doc(); 
   
-      
+    var  send=false;
 
   getdate() async {
     
@@ -76,7 +79,7 @@ class _CartState extends State<Cart> {
   
    
    
-    //await FirebaseFirestore.instance.collection('purchases').doc(id).delete();
+    await FirebaseFirestore.instance.collection('purchases').doc(id).delete();
  
   }
  
@@ -147,7 +150,7 @@ class _CartState extends State<Cart> {
                                 child: IconButton(
                                   onPressed: () {
                                     setState(() {
-                                      /*delet();*/
+                                     // delet('${users1[index]['id']}');
                                       users1.removeAt(index);
                                       print(userref.id);
                                     });
@@ -196,8 +199,14 @@ class _CartState extends State<Cart> {
                   ),
                   TextButton.icon(
                     onPressed: () async{
+                      showDialog(context: context, builder:(context){
+                        return Center(child: CircularProgressIndicator(),);
+                      });
                       
-                       await makePayment();
+                      await makePayment();
+                      Navigator.of(context).pop();
+                      
+                       
                      
                      
                     },
@@ -220,17 +229,24 @@ class _CartState extends State<Cart> {
     );
   }
 Future<void> makePayment() async {
-    try {
+    try { 
       paymentIntent = await createPaymentIntent('${resut()}', 'USD'); 
       //Payment Sheet 
       await Stripe.instance.initPaymentSheet(
+        
           paymentSheetParameters: SetupPaymentSheetParameters(
               paymentIntentClientSecret: paymentIntent!['client_secret'],
-              // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
-              // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
+              customerEphemeralKeySecret: paymentIntent!['ephemeralKey'],
+              billingDetails: const BillingDetails(name: 'ahmed',phone: '07510216910',email: 'kosayalamsour@gmail.com' ),
+              
+             
+              
+
+            // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
+             // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
               style: ThemeMode.dark,
-              merchantDisplayName: 'Adnan')).then((value){
-      });
+              merchantDisplayName: 'Ahmed')).then((value){
+      }); 
 
 
       ///now finally display payment sheeet
@@ -240,38 +256,45 @@ Future<void> makePayment() async {
     }
   }
 
-  displayPaymentSheet() async {
-
+displayPaymentSheet() async {
     try {
-      await Stripe.instance.presentPaymentSheet(
-          ).then((value){
-
-        // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("paid successfully")));
+      await Stripe.instance.presentPaymentSheet().then((value) {
+       
+       if (paymentIntent!["status"]=="succeeded") {
+        print('hello ahmed your done');
+         
+       }
+        //Clear paymentIntent variable after successful payment
+        
         paymentIntent = null;
-
-
-      }).onError((error, stackTrace){
-        print('Error is:--->$error $stackTrace');
+      
+      })
+      .onError((error, stackTrace) {
+        throw Exception(error);
       });
-
-
-    } on StripeException catch (e) {
-      print('Error is:---> $e');
-      showDialog(
-          context: context,
-          builder: (_) => const AlertDialog(
-            content: Text("Cancelled "),
-          ));
     } 
+    on StripeException catch (e) {
+    print('Error is:---> $e'); 
+    } 
+    catch (e) {
+      print('$e');
+    }
   }
-
   //  Future<Map<String, dynamic>>
   createPaymentIntent(String amount, String currency) async {
     try {
       Map<String, dynamic> body = {
         'amount': calculateAmount(amount),
         'currency': currency,
-        'payment_method_types[]': 'card'
+        'payment_method_types[]': 'card',
+       
+
+        
+
+        
+        
+
+        
       };
 
       var response = await http.post(
@@ -284,6 +307,7 @@ Future<void> makePayment() async {
           );
       // ignore: avoid_print
       print('Payment Intent Body->>> ${response.body.toString()}');
+      
       return jsonDecode(response.body);
     } catch (err) {
       // ignore: avoid_print

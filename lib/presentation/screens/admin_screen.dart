@@ -85,7 +85,7 @@ class AdminScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  Profile()));
+                    MaterialPageRoute(builder: (context) =>  Profile1()));
               },
             ),
             ListTile(

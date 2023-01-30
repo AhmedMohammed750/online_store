@@ -1,15 +1,21 @@
 // Packages
 // ignore_for_file: prefer_const_constructors
 
+
+
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:online_store_app/data/firebase.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+
 
 // Screens
 import 'package:online_store_app/presentation/screens/home_screen.dart';
 import 'package:online_store_app/presentation/screens/welcome/register_screen.dart';
+import 'package:sizer/sizer.dart';
 
 // Core
 import '../../../core/components.dart';
@@ -83,6 +89,22 @@ class _LoginScreenState extends State<LoginScreen> {
       }
     } 
   }
+  signinwithgoogle()async{
+
+    try{
+  GoogleSignInAccount? googleuser=await GoogleSignIn().signIn();
+  GoogleSignInAuthentication? googleauth=await googleuser?.authentication;
+  AuthCredential credential=  GoogleAuthProvider.credential( accessToken:googleauth?.accessToken ,idToken:googleauth?.idToken  );
+   UserCredential user7=await FirebaseAuth.instance.signInWithCredential(credential);
+   print(user7.user?.displayName);
+   if(user7.user!=null){
+     navigateAndFinish(context, const HomeScreen());
+
+   }}catch(e){
+    print(e);
+   }
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -226,8 +248,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () async {
-                              var user = await signin();
+                               var user = await signin();
+                             //print(user);
+                            
                               if (user != null) {
+                                
                                 navigateAndFinish(context, const HomeScreen());
                               }
                             },
@@ -263,7 +288,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  ElevatedButton.icon(style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.black,
+                    minimumSize: Size(70.w,50)
+                  ),
+                    
+                    
+                    onPressed: (){
+                      signinwithgoogle();
+
+
+
+                    }, icon:Icon(Icons.g_mobiledata ,color: Colors.red,size: 25.sp,),
+                    label: Text('Sign Up With Google',style:TextStyle(fontWeight: FontWeight.bold),),
+                    )
                 ],
               ),
             ),
@@ -273,3 +313,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+

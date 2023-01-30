@@ -7,6 +7,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:online_store_app/data/firebase.dart';
 import 'package:online_store_app/presentation/screens/welcome/verif.dart';
 import '../home_screen.dart';
 
@@ -44,7 +45,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email.text,
           password: password.text,
+          
+          
+
         );
+        
+      
+        
+        
         if (credential.user?.emailVerified == false) {
           User? user = FirebaseAuth.instance.currentUser;
           await user?.sendEmailVerification();

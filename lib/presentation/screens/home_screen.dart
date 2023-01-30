@@ -67,12 +67,11 @@ class _HomeScreenState extends State<HomeScreen> {
       // ignore: empty_catches
     } catch (e) {}
   }
-   
 
   @override
   void initState() {
-  
     getdate();
+
     getdate1();
 
     // TODO: implement initState
@@ -84,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
     LocaleController contlor = Get.find();
     return Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
-          height: 10.h,
+          // height: 10.h,
           animationDuration: const Duration(milliseconds: 300),
           backgroundColor: Colors.white,
           color: const Color.fromARGB(255, 2, 32, 56),
@@ -107,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 await FirebaseAuth.instance.signOut();
 
                 // ignore: use_build_context_synchronously
+
                 navigateAndFinish(context, LoginScreen());
               },
               icon: const Icon(Icons.login_rounded),
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     showSearch(context: context, delegate: Costemsearch());
                   });
-                  
+
                   // Navigator.push(context, MaterialPageRoute(builder:(context) =>const Search(),));
                 },
                 icon: const Icon(Icons.search)),
@@ -191,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
+                      MaterialPageRoute(builder: (context) => Profile1()));
                 },
               ),
               ListTile(
@@ -262,19 +262,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: pages[page]);
   }
-  
 }
 
 class Costemsearch extends SearchDelegate {
-  
   List users1 = [];
 
   List name = name1;
-   
-  
-
-
- 
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -298,9 +291,6 @@ class Costemsearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-   
-    
-    
     List<String> matchQuery = [];
     for (var value in name) {
       matchQuery.add(value);
@@ -324,23 +314,25 @@ class Costemsearch extends SearchDelegate {
       if (value.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(value);
       }
-      
     }
 
     return ListView.builder(
       itemBuilder: ((context, index) {
-         var result ;
-         result = matchQuery[index];
+        var result;
+        result = matchQuery[index];
         return ListTile(
-          title: TextButton(child: Text(result),onPressed:()async{
-            
-            await geterr(result);
-            log(result);
-            Navigator.push(context,MaterialPageRoute(builder:(context) => Search(result),));
-            
-           
-
-          },),
+          title: TextButton(
+            child: Text(result),
+            onPressed: () async {
+              await geterr(result);
+              log(result);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Search(result),
+                  ));
+            },
+          ),
         );
       }),
       itemCount: matchQuery.length,

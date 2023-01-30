@@ -1,35 +1,74 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:online_store_app/data/firebase.dart';
+import 'package:profile/profile.dart';
+import 'package:sizer/sizer.dart';
 
-class Profile extends StatelessWidget {
-   Profile({super.key});
-   
-   
-  
+class Profile1 extends StatefulWidget {
+   Profile1({super.key});
 
+  @override
+  State<Profile1> createState() => _Profile1State();
+}
+
+class _Profile1State extends State<Profile1> {
+
+ final dat=DateTime.parse('${user1?.metadata.creationTime}');
+
+  @override
+  void initState() {
+    print('====================');
+    print('$user1');
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-        centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 2, 32, 56),
-      ),
-      body:Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          
-          children: const [
-            Text('Name: '),
-            SizedBox(height:5,),
-            Text('created:'),
-            
+      appBar: AppBar(backgroundColor: const Color.fromARGB(255, 2, 32, 56),
+        centerTitle: true,title:Text('Profile',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)),
+      body: Column(
+     crossAxisAlignment: CrossAxisAlignment.center,
+       
+      children: [
+        Container(
+          color: Colors.blue[200],
+          child: Center(
+            child: GFAvatar(maxRadius: 100,
+              backgroundImage:NetworkImage(
+              "${user?.photoURL}"),)
+          ),
+        ),
+        Divider(color: const Color.fromARGB(255, 2, 32, 56),thickness: 1.h,),
+        ListView( scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          children: [
+            ListTile(title: Text('Name',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            subtitle: Text('${user?.displayName}',style: TextStyle(fontSize: 15.sp),),
+
+            ),
+                        ListTile(title: Text('Created:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            subtitle: Text('${dat.year} - ${dat.month} - ${dat.day}',style: TextStyle(fontSize: 15.sp),),
+
+            ),
+                        ListTile(title: Text('Email:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            subtitle: Text('${user?.email}',style: TextStyle(fontSize: 15.sp),),
+
+            ),
+                        ListTile(title: Text('Email Verified:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            subtitle: Text('${user?.emailVerified}',style: TextStyle(fontSize: 15.sp),),
+
+            ),
 
           ],
-        ),
-      ),
+        )
+
+
+      ],
+    )
+   
+
     );
   }
 }
+var user1=FirebaseAuth.instance.currentUser;

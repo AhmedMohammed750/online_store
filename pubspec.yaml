@@ -61,6 +61,8 @@ dependencies:
  
   http: ^0.13.5
   flutter_stripe: ^4.0.0
+  profile: ^0.0.1
+  google_sign_in: ^5.4.3
 
 dev_dependencies:
   flutter_test:

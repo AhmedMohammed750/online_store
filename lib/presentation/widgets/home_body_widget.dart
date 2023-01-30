@@ -24,9 +24,11 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
 
   getdate() async {
     try {
+      
        CollectionReference userref =
         FirebaseFirestore.instance.collection('prodects');
     await userref.get().then((value) => {
+      
           // ignore: avoid_function_literals_in_foreach_calls
           value.docs.forEach((element) {
             setState(() {
@@ -45,7 +47,9 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
 
   @override
   void initState() {
+     
     getdate();
+    
 
     super.initState();
   }
@@ -178,7 +182,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                             ),
                             child: Text(
                               '${users1[i]['name']}',
-                              textAlign: TextAlign.start,
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,

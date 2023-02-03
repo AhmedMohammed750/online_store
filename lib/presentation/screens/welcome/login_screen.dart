@@ -1,5 +1,5 @@
 // Packages
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, deprecated_member_use
 
 
 
@@ -21,7 +21,7 @@ import 'package:sizer/sizer.dart';
 import '../../../core/components.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -47,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
         final credential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
                 email: email.text, password: password.text);
-        print(credential.user?.emailVerified);
         return credential;
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
@@ -67,7 +66,6 @@ class _LoginScreenState extends State<LoginScreen> {
           )..show();
           // ignore: avoid_single_cascade_in_expression_statements
 
-          print('No user found for that email.');
         } else if (e.code == 'wrong-password') {
           // ignore: avoid_single_cascade_in_expression_statements
           AwesomeDialog(
@@ -84,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
             btnOkOnPress: () {},
           )..show();
         } else if (e.code == 'emailVerified') {
-          print('not verfied');
         }
       }
     } 
@@ -96,12 +93,12 @@ class _LoginScreenState extends State<LoginScreen> {
   GoogleSignInAuthentication? googleauth=await googleuser?.authentication;
   AuthCredential credential=  GoogleAuthProvider.credential( accessToken:googleauth?.accessToken ,idToken:googleauth?.idToken  );
    UserCredential user7=await FirebaseAuth.instance.signInWithCredential(credential);
-   print(user7.user?.displayName);
    if(user7.user!=null){
+     // ignore: use_build_context_synchronously
      navigateAndFinish(context, const HomeScreen());
 
+   // ignore: empty_catches
    }}catch(e){
-    print(e);
    }
 
 }
@@ -253,6 +250,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             
                               if (user != null) {
                                 
+                                // ignore: use_build_context_synchronously
                                 navigateAndFinish(context, const HomeScreen());
                               }
                             },

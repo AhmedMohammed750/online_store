@@ -15,7 +15,13 @@ class Locale implements Translations {
           '8': "سياسةوالخصوصية",
           '9': "مشتريات",
           '10': 'افضل مكان لشراء منتجات الكترونية',
-          '11': 'السعر'
+          '11': 'السعر',
+          '12':'المجموع',
+          '13':'الدفع',
+          '14':'الاسم:',
+          '15':"تاريخ الانشاء:",
+          "16":"البريد الإلكتروني:",
+          '17':'تم التحقق من البريد الإلكتروني :' 
         },
         'en': {
           '1': 'Home page',
@@ -28,7 +34,13 @@ class Locale implements Translations {
           '8': "Privacy Policy",
           '9': 'purchases',
           '10': 'Best place to buy electronic products',
-          '11': 'Price'
+          '11': 'Price',
+          '12':'TOTAL',
+          '13':'PAYMENT',
+          '14':'Name:',
+          '15':'Created:',
+          '16':'Email:',
+          '17':'Email verified:'
         },
 
         // Persian or Farsi ==> fa
@@ -43,7 +55,13 @@ class Locale implements Translations {
           '8': " تایبەتمەندی و رێنمایی ",
           '9': 'کڕینەکان',
           '10': 'باشترین شوێن بۆ کرینی بەرهەمەکانی تەکنەلۆژیا',
-          '11': 'نرخ'
+          '11': 'نرخ',
+          '12':'TOTAL',
+          '13':'PAYMENT',
+          '14':'Name',
+          '15':'Created',
+          '16':'Email',
+          '17':'Email verified'
         }
       };
 }

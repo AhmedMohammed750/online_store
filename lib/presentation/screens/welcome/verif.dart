@@ -23,7 +23,7 @@ class verify extends StatelessWidget {
               
                
               children: [
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
               CircleAvatar(
                         maxRadius: 90.0,
                         child: Image.network(
@@ -34,8 +34,8 @@ class verify extends StatelessWidget {
 
                       ,const SizedBox(height: 10,)
                       ,const Text('A verification email has been sent to your please check your mailbox to verify the account before you sign',style: TextStyle(fontSize: 18),)
-                      ,SizedBox(height: 50,)
-                      ,ElevatedButton(onPressed: (){navigateAndFinish(context, LoginScreen());}, child:Text('Sign IN'))
+                      ,const SizedBox(height: 50,)
+                      ,ElevatedButton(onPressed: (){navigateAndFinish(context, const LoginScreen());}, child:const Text('Sign IN'))
             ]),
           ),
         ),

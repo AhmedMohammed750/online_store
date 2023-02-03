@@ -143,6 +143,7 @@ class _AddproductState extends State<Addproduct> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    // ignore: body_might_complete_normally_nullable
                     validator: (String? value) {
                       try {
                         if (value!.isEmpty) {

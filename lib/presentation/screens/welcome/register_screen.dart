@@ -1,15 +1,14 @@
 // Packages
 
-// ignore_for_file: prefer_const_constructors, unnecessary_this
+// ignore_for_file: prefer_const_constructors, unnecessary_this, empty_catches, duplicate_ignore, avoid_print
 
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:online_store_app/data/firebase.dart';
+
 import 'package:online_store_app/presentation/screens/welcome/verif.dart';
-import '../home_screen.dart';
 
 // Screens
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
@@ -18,7 +17,7 @@ import 'package:online_store_app/presentation/screens/welcome/login_screen.dart'
 import '../../../core/components.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -182,12 +181,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                            // ignore: body_might_complete_normally_nullable, duplicate_ignore
                             validator: (String? value) {
+                              // ignore: duplicate_ignore, duplicate_ignore, duplicate_ignore
                               try {
                                 if (value!.isEmpty) {
                                   return 'Phone Number must not be empty';
                                 }
                                 return null;
+                              // ignore: empty_catches
                               } catch (e) {}
                             },
                           ),
@@ -221,6 +223,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          // ignore: body_might_complete_normally_nullable
                           validator: (String? value) {
                             try {
                               if (value!.isEmpty ||
@@ -229,6 +232,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               }
                               return null;
                             } catch (e) {
+                              // ignore: avoid_print
                               print('error');
                             }
                           },
@@ -264,6 +268,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
+                          // ignore: body_might_complete_normally_nullable
                           validator: (String? value) {
                             try {
                               if (value!.isEmpty) {
@@ -303,6 +308,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   color: Colors.white54,
                                   fontWeight: FontWeight.bold),
                             ),
+                            // ignore: body_might_complete_normally_nullable
                             validator: (String? value) {
                               try {} catch (e) {
                                 if (value!.isEmpty) {
@@ -334,12 +340,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: TextButton(
                             onPressed: () async {
                               UserCredential? respon = await signUp();
+                              // ignore: avoid_print
                               print('===============');
                               if (respon == null) {
                                 // ignore: use_build_context_synchronously
                                 navigateAndFinish(context, verify());
                                 print('its work');
                               } else {
+                                // ignore: avoid_print
                                 print('===============');
                               }
                             },

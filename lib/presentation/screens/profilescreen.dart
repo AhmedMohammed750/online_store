@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:online_store_app/data/firebase.dart';
-import 'package:profile/profile.dart';
+
 import 'package:sizer/sizer.dart';
 
 class Profile1 extends StatefulWidget {
-   Profile1({super.key});
+   const Profile1({super.key});
 
   @override
   State<Profile1> createState() => _Profile1State();
@@ -18,15 +19,14 @@ class _Profile1State extends State<Profile1> {
 
   @override
   void initState() {
-    print('====================');
-    print('$user1');
+ 
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color.fromARGB(255, 2, 32, 56),
-        centerTitle: true,title:Text('Profile',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)),
+        centerTitle: true,title:Text('6'.tr,style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)),
       body: Column(
      crossAxisAlignment: CrossAxisAlignment.center,
        
@@ -43,19 +43,19 @@ class _Profile1State extends State<Profile1> {
         ListView( scrollDirection: Axis.vertical,
           shrinkWrap: true,
           children: [
-            ListTile(title: Text('Name',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            ListTile(title: Text('14'.tr,style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             subtitle: Text('${user?.displayName}',style: TextStyle(fontSize: 15.sp),),
 
             ),
-                        ListTile(title: Text('Created:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+                        ListTile(title: Text('15'.tr,style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             subtitle: Text('${dat.year} - ${dat.month} - ${dat.day}',style: TextStyle(fontSize: 15.sp),),
 
             ),
-                        ListTile(title: Text('Email:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+                        ListTile(title: Text('16'.tr,style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             subtitle: Text('${user?.email}',style: TextStyle(fontSize: 15.sp),),
 
             ),
-                        ListTile(title: Text('Email Verified:',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+                        ListTile(title: Text('17'.tr,style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             subtitle: Text('${user?.emailVerified}',style: TextStyle(fontSize: 15.sp),),
 
             ),

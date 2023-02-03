@@ -8,7 +8,8 @@ import 'package:sizer/sizer.dart';
 
 class Productdec extends StatefulWidget {
   final user;
-  Productdec(this.user);
+  // ignore: use_key_in_widget_constructors
+  const Productdec(this.user);
 
   @override
   State<Productdec> createState() => _ProductdecState();
@@ -43,12 +44,7 @@ class _ProductdecState extends State<Productdec> {
           ).show();
 
   }
-  @override
-  void initState() {
 
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -178,8 +174,8 @@ class _ProductdecState extends State<Productdec> {
 
                 addprod();
               },
-              icon: Icon(Icons.shopping_cart),
-              label: Text('Add To Cart'),
+              icon: const Icon(Icons.shopping_cart),
+              label: const Text('Add To Cart'),
             ),
             SizedBox(
               height: 5.h,

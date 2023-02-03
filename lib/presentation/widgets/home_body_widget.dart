@@ -1,53 +1,57 @@
 // Packages
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
+import 'package:online_store_app/presentation/screens/category.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
 
 import 'package:sizer/sizer.dart';
 
+// ignore: use_key_in_widget_constructors
 class HomeBodyWidget extends StatefulWidget {
-
-
   @override
   State<HomeBodyWidget> createState() => _HomeBodyWidgetState();
 }
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   List users1 = [];
-    final List<String> imgList = [
+  final List<String> imgList = [
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fdownload.jpg?alt=media&token=74e51892-3b94-4994-b650-4366fd411f40',
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
   ];
+  String? valuechoos;
+  List item = [
+    'laptop',
+    'mobile',
+    'printer',
+    'headset',
+    'mouse',
+    'technology tools'
+  ];
 
   getdate() async {
     try {
-      
-       CollectionReference userref =
-        FirebaseFirestore.instance.collection('prodects');
-    await userref.get().then((value) => {
-      
-          // ignore: avoid_function_literals_in_foreach_calls
-          value.docs.forEach((element) {
-            setState(() {
-              users1.add(element.data());
-            });
-          })
-        });
-    
-      
-    // ignore: empty_catches
-    } catch (e) {
-      
-    }
-   
+      CollectionReference userref =
+          FirebaseFirestore.instance.collection('prodects');
+      await userref.get().then((value) => {
+            // ignore: avoid_function_literals_in_foreach_calls
+            value.docs.forEach((element) {
+              setState(() {
+                users1.add(element.data());
+              });
+            })
+          });
+
+      // ignore: empty_catches
+    } catch (e) {}
   }
 
   @override
   void initState() {
-     
     getdate();
     
 
@@ -59,6 +63,45 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
     return SingleChildScrollView(
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue, width: 1.w),
+                  borderRadius: BorderRadius.circular(15)),
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: DropdownButton(
+                  dropdownColor: Colors.grey,
+                  iconSize: 30.sp,
+                  isExpanded: true,
+                  hint: Center(
+                      child: Text(
+                    'select category:',
+                    style:
+                        TextStyle(color: const Color.fromARGB(255, 2, 32, 56),
+                          
+                          fontWeight: FontWeight.bold, fontSize: 15.sp),
+                  )),
+                  value: valuechoos,
+                  items: item.map((itemvalue) {
+                    return DropdownMenuItem(
+                      value: itemvalue,
+                      child: Text(itemvalue,style: const TextStyle(fontWeight: FontWeight.bold),),
+                    );
+                  }).toList(),
+                  onChanged: (newvalue) {
+                    setState(() {
+                      valuechoos = (newvalue as String?)!;
+                      getdate();
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => Category(newvalue))));
+                    });
+                  }),
+            ),
+          ),
           SizedBox(
             height: 40.h,
             width: 100.w,
@@ -147,8 +190,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                               Productdec(users1[i])),
-                                            
+                                              Productdec(users1[i])),
                                     );
                                   },
                                   child: Image.network(

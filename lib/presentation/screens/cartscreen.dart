@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:get/get.dart';
 
 
 import 'package:http/http.dart' as http;
@@ -182,7 +183,7 @@ class _CartState extends State<Cart> {
                   Column(
                     children: [
                       Text(
-                        ' TOTAL',
+                        '12'.tr,
                         style: TextStyle(
                             fontSize: 12.sp,
                             color: Colors.red[900],
@@ -216,7 +217,7 @@ class _CartState extends State<Cart> {
                       color: Colors.red,
                     ),
                     label: Text(
-                      'Payment',
+                      '13'.tr,
                       style: TextStyle(color: Colors.red),
                     ),
                   )

@@ -21,7 +21,9 @@ class Locale implements Translations {
           '14':'الاسم:',
           '15':"تاريخ الانشاء:",
           "16":"البريد الإلكتروني:",
-          '17':'تم التحقق من البريد الإلكتروني :' 
+          '17':'تم التحقق من البريد الإلكتروني :',
+          '18':'المفضل'
+        
         },
         'en': {
           '1': 'Home page',
@@ -40,7 +42,8 @@ class Locale implements Translations {
           '14':'Name:',
           '15':'Created:',
           '16':'Email:',
-          '17':'Email verified:'
+          '17':'Email verified:',
+          '18':'Favorite'
         },
 
         // Persian or Farsi ==> fa
@@ -61,7 +64,8 @@ class Locale implements Translations {
           '14':'Name',
           '15':'Created',
           '16':'Email',
-          '17':'Email verified'
+          '17':'Email verified',
+          '18':'favorite'
         }
       };
 }

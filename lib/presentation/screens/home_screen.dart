@@ -14,6 +14,7 @@ import 'package:online_store_app/presentation/screens/admin_screen.dart';
 import 'package:online_store_app/presentation/screens/cartscreen.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
+import 'package:online_store_app/presentation/screens/purchess.dart';
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
 import 'package:online_store_app/presentation/widgets/search.dart';
 import 'package:sizer/sizer.dart';
@@ -165,12 +166,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               ListTile(
-                title: Text('9'.tr,
-                    style: const TextStyle(color: Colors.white, fontSize: 20)),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
-                },
+                  title: Text('9'.tr,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 20)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Purches()));
+                  },
+                  subtitle:
+                      Icon(Icons.card_travel_sharp, color: GFColors.DANGER)),
+              Divider(
+                color: Color.fromARGB(255, 244, 247, 250),
+                thickness: 1,
+              ),
+              ListTile(
+                  title: Text('18'.tr,
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 20)),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Purches()));
+                  },
+                  subtitle: Icon(Icons.favorite, color: GFColors.DANGER)),
+              Divider(
+                color: Color.fromARGB(255, 244, 247, 250),
+                thickness: 1,
               ),
               ListTile(
                 title: Text(
@@ -184,6 +208,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(
                           builder: (context) => const HomeScreen()));
                 },
+                subtitle: Icon(Icons.home, color: GFColors.DANGER),
+              ),
+              Divider(
+                color: Color.fromARGB(255, 244, 247, 250),
+                thickness: 1,
               ),
               ListTile(
                 title: Text('6'.tr,
@@ -193,6 +222,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Profile1()));
                 },
+                subtitle:
+                    Icon(Icons.account_box_rounded, color: GFColors.DANGER),
+              ),
+              Divider(
+                color: Color.fromARGB(255, 244, 247, 250),
+                thickness: 1,
               ),
               ListTile(
                 title: Text('7'.tr,
@@ -200,6 +235,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   _launchUrl2();
                 },
+                subtitle: Icon(Icons.email, color: GFColors.DANGER),
+              ),
+              Divider(
+                color: Color.fromARGB(255, 244, 247, 250),
+                thickness: 1,
               ),
               ListTile(
                 title: Text('8'.tr,
@@ -207,10 +247,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   _launchUrl();
                 },
+                subtitle: Icon(
+                  Icons.privacy_tip,
+                  color: GFColors.DANGER,
+                ),
               ),
               Column(
                 children: [
-                  SizedBox(height: 10.h),
+                  SizedBox(height: 5.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

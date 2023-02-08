@@ -1,6 +1,6 @@
 // Packages
 
-
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -18,6 +18,7 @@ class HomeBodyWidget extends StatefulWidget {
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   List users1 = [];
+
   final List<String> imgList = [
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fdownload.jpg?alt=media&token=74e51892-3b94-4994-b650-4366fd411f40',
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F2.jpg?alt=media&token=373d4dfb-5ce7-4dab-8ea9-1612b5d27cbb',
@@ -53,7 +54,6 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   @override
   void initState() {
     getdate();
-    
 
     super.initState();
   }
@@ -77,16 +77,19 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                   hint: Center(
                       child: Text(
                     'select category:',
-                    style:
-                        TextStyle(color: const Color.fromARGB(255, 2, 32, 56),
-                          
-                          fontWeight: FontWeight.bold, fontSize: 15.sp),
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 32, 135, 219),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15.sp),
                   )),
                   value: valuechoos,
                   items: item.map((itemvalue) {
                     return DropdownMenuItem(
                       value: itemvalue,
-                      child: Text(itemvalue,style: const TextStyle(fontWeight: FontWeight.bold),),
+                      child: Text(
+                        itemvalue,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
                     );
                   }).toList(),
                   onChanged: (newvalue) {
@@ -202,6 +205,56 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                 ),
                               ),
                             )),
+                        Positioned(
+                          top: 0.0,
+                          bottom: 100.0,
+                          left: 10.0,
+                          right: 100.0,
+                          child: Container(
+                              height: 5.h,
+                              width: 5.w,
+                              decoration: const BoxDecoration(
+                                gradient: LinearGradient(
+                                  // ignore: prefer_const_literals_to_create_immutables
+                                  colors: [
+                                    Color.fromARGB(100, 22, 44, 33),
+                                    Color.fromRGBO(24, 233, 111, 0.6)
+                                  ],
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                ),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 0,
+                                horizontal: 0,
+                              ),
+                              child: IconButton(
+                                icon: const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                  
+                                    AwesomeDialog(
+                                      context: context,
+                                      animType: AnimType.rightSlide,
+                                      dialogType: DialogType.success,
+                                      body: const Center(
+                                        child: Text(
+                                          'Has been added to favorite',
+                                          style: TextStyle(
+                                              fontStyle: FontStyle.italic),
+                                        ),
+                                      ),
+                                      title: 'Erorr Email',
+                                      btnOkOnPress: () {},
+                                    ).show();
+                                   
+                                  });
+                                },
+                              )),
+                        ),
                         Positioned(
                           bottom: 0.0,
                           left: 0.0,

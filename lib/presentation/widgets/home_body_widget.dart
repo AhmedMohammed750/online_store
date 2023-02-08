@@ -233,9 +233,15 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                   Icons.favorite,
                                   color: Colors.red,
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
+                                  Map<String, String> DataToSave = {
+                                    'name': '${users1[i]['name']}',
+                                    'image': '${users1[i]['image']}'
+                                  };
+                                  await FirebaseFirestore.instance
+                                      .collection('favorite')
+                                      .add(DataToSave);
                                   setState(() {
-                                  
                                     AwesomeDialog(
                                       context: context,
                                       animType: AnimType.rightSlide,
@@ -250,7 +256,6 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                       title: 'Erorr Email',
                                       btnOkOnPress: () {},
                                     ).show();
-                                   
                                   });
                                 },
                               )),

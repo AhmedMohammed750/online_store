@@ -12,6 +12,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:online_store_app/data/firebase.dart';
 import 'package:online_store_app/presentation/screens/admin_screen.dart';
 import 'package:online_store_app/presentation/screens/cartscreen.dart';
+import 'package:online_store_app/presentation/screens/favorite.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:online_store_app/presentation/screens/purchess.dart';
@@ -104,6 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             IconButton(
               onPressed: () async {
+                user = null;
                 await FirebaseAuth.instance.signOut();
 
                 // ignore: use_build_context_synchronously
@@ -177,9 +179,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   subtitle:
                       Icon(Icons.card_travel_sharp, color: GFColors.DANGER)),
-              Divider(
-                color: Color.fromARGB(255, 244, 247, 250),
-                thickness: 1,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
               ),
               ListTile(
                   title: Text('18'.tr,
@@ -189,12 +202,23 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Purches()));
+                            builder: (context) => const Favorite()));
                   },
                   subtitle: Icon(Icons.favorite, color: GFColors.DANGER)),
-              Divider(
-                color: Color.fromARGB(255, 244, 247, 250),
-                thickness: 1,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
               ),
               ListTile(
                 title: Text(
@@ -210,9 +234,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 subtitle: Icon(Icons.home, color: GFColors.DANGER),
               ),
-              Divider(
-                color: Color.fromARGB(255, 244, 247, 250),
-                thickness: 1,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
               ),
               ListTile(
                 title: Text('6'.tr,
@@ -222,12 +257,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Profile1()));
                 },
-                subtitle:
-                    Icon(Icons.account_box_rounded, color: GFColors.DANGER),
+                subtitle: const Icon(Icons.account_box_rounded,
+                    color: GFColors.DANGER),
               ),
-              Divider(
-                color: Color.fromARGB(255, 244, 247, 250),
-                thickness: 1,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
               ),
               ListTile(
                 title: Text('7'.tr,
@@ -235,11 +281,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   _launchUrl2();
                 },
-                subtitle: Icon(Icons.email, color: GFColors.DANGER),
+                subtitle: const Icon(Icons.email, color: GFColors.DANGER),
               ),
-              Divider(
-                color: Color.fromARGB(255, 244, 247, 250),
-                thickness: 1,
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
               ),
               ListTile(
                 title: Text('8'.tr,
@@ -247,7 +304,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   _launchUrl();
                 },
-                subtitle: Icon(
+                subtitle: const Icon(
                   Icons.privacy_tip,
                   color: GFColors.DANGER,
                 ),
@@ -298,6 +355,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               (colo == 3) ? GFColors.DANGER : GFColors.PRIMARY,
                           text: "5".tr),
                     ],
+                  ),
+                  SizedBox(
+                    height: 4.h,
                   )
                 ],
               )

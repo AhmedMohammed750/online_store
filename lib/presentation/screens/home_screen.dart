@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -107,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () async {
                 user = null;
                 await FirebaseAuth.instance.signOut();
+                
 
                 // ignore: use_build_context_synchronously
 
@@ -307,6 +309,93 @@ class _HomeScreenState extends State<HomeScreen> {
                 subtitle: const Icon(
                   Icons.privacy_tip,
                   color: GFColors.DANGER,
+                ),
+              ),
+              
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
+              ),
+                            ListTile(
+                title: Text('19'.tr,
+                    style: const TextStyle(color: Colors.white, fontSize: 20)),
+                onTap: () {
+                  try {
+                     if (user?.email=='kosayalmansour@gmail.com') {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AdminScreen(),));
+
+                    
+                  }
+                  else{
+                      AwesomeDialog(
+                                      context: context,
+                                      animType: AnimType.rightSlide,
+                                      dialogType: DialogType.error,
+                                      body: const Center(
+                                        child: Text(
+                                          'Has been added to favorite',
+                                          style: TextStyle(
+                                              fontStyle: FontStyle.italic),
+                                        ),
+                                      ),
+                                      title: 'Erorr Email',
+                                      btnOkOnPress: () {},
+                                    ).show();
+                  }
+                    
+                  // ignore: avoid_print
+                  } catch (e) {print(e);
+                    
+                  }
+                 
+                  
+                },
+                subtitle: const Icon(
+                  Icons.admin_panel_settings_rounded,
+                  color: GFColors.DANGER,
+                ),
+              ),
+              
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
+                ),
+              ),
+              
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                height: 2,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Color.fromRGBO(186, 104, 200, 1),
+                      Color.fromRGBO(74, 20, 140, 1),
+                    ],
+                  ),
                 ),
               ),
               Column(

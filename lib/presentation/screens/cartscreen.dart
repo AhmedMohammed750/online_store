@@ -73,16 +73,21 @@ class _CartState extends State<Cart> {
     return result;
   }
 
-  delet(id) async {
+ delet(name) async {
+    //await FirebaseFirestore.instance.collection('favorite').doc(id).delete();
 
-
-   
-  
-   
-   
-    await FirebaseFirestore.instance.collection('purchases').doc(id).delete();
+    
+final collection = FirebaseFirestore.instance.collection('purchases');
+      final snapshot =
+          await collection.where('name', isEqualTo:name).get();
+      for (var doc in snapshot.docs) {
+       
  
+
+        await doc.reference.delete();
+      }
   }
+
  
   
 
@@ -151,7 +156,7 @@ class _CartState extends State<Cart> {
                                 child: IconButton(
                                   onPressed: () {
                                     setState(() {
-                                     // delet('${users1[index]['id']}');
+                                     delet('${users1[index]['name']}');
                                       users1.removeAt(index);
                                       print(userref.id);
                                     });

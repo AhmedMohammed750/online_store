@@ -4,6 +4,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
 import 'package:get/get.dart';
 import 'package:online_store_app/presentation/screens/category.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
@@ -40,8 +42,9 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
           FirebaseFirestore.instance.collection('prodects');
       await userref.get().then((value) => {
             // ignore: avoid_function_literals_in_foreach_calls
-            value.docs.forEach((element) {
+            value..docs.forEach((element) {
               setState(() {
+                
                 users1.add(element.data());
               });
             })
@@ -234,11 +237,18 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                   color: Colors.red,
                                 ),
                                 onPressed: () async {
+                               
+                                  
                                   Map<String, String> DataToSave = {
                                     'name': '${users1[i]['name']}',
-                                    'image': '${users1[i]['image']}'
+                                    'image': '${users1[i]['image']}',
+
+                                    
+                                    
+                                    
                                   };
-                                  await FirebaseFirestore.instance
+                                  
+                                     var ds= await FirebaseFirestore.instance
                                       .collection('favorite')
                                       .add(DataToSave);
                                   setState(() {
@@ -314,6 +324,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                     ));
                   }),
                 ),
+                
               ],
             ),
           )

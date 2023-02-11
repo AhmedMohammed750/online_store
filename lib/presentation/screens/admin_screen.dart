@@ -59,7 +59,7 @@ class AdminScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Add Product'.tr,
+              title: Text('21'.tr,
                   style: const TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
                 Navigator.push(context,
@@ -80,28 +80,16 @@ class AdminScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('6'.tr,
+              title: Text('20'.tr,
                   // ignore: prefer_const_constructors
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>  Profile1()));
+                // Navigator.push(context,
+                //     MaterialPageRoute(builder: (context) =>  Profile1()));
               },
             ),
-            ListTile(
-              title: Text('7'.tr,
-                  style: const TextStyle(color: Colors.white, fontSize: 20)),
-              onTap: () {
-                
-              },
-            ),
-            ListTile(
-              title: Text('8'.tr,
-                  style: const TextStyle(color: Colors.white, fontSize: 20)),
-              onTap: () {
-               
-              },
-            ),
+
+    
             Column(
               children: [
                 SizedBox(height: 10.h),
@@ -116,9 +104,23 @@ class AdminScreen extends StatelessWidget {
           ],
         ),
       ),
-      body:Container(height:90.h,width: 100.w, child:Image.network('https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fadmin.gif?alt=media&token=a53c0b16-ccca-4183-ab04-476ded2226bd'),) 
+      body:Image.network(
+                  'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2Fadmin.gif?alt=media&token=a53c0b16-ccca-4183-ab04-476ded2226bd',
+                  fit: BoxFit.fill,height: 100.h,width: 100.w,
+                  loadingBuilder: (BuildContext context, Widget child,
+                      ImageChunkEvent? loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return Center(
+                      child: CircularProgressIndicator(
+                        value: loadingProgress.expectedTotalBytes != null
+                            ? loadingProgress.cumulativeBytesLoaded /
+                                loadingProgress.expectedTotalBytes!
+                            : null,
+                      ),
+                    );
+                  },
       
-    );
+    ));
   }
   
   void _launchUrl2() {}

@@ -22,7 +22,10 @@ class Locale implements Translations {
           '15':"تاريخ الانشاء:",
           "16":"البريد الإلكتروني:",
           '17':'تم التحقق من البريد الإلكتروني :',
-          '18':'المفضل'
+          '18':'المفضل',
+          '19':'حساب المشرف',
+          '20':'حذف المنتج',
+          '21':'اضافة المنتج'
         
         },
         'en': {
@@ -43,7 +46,11 @@ class Locale implements Translations {
           '15':'Created:',
           '16':'Email:',
           '17':'Email verified:',
-          '18':'Favorite'
+          '18':'Favorite',
+          '19':'Admin Account',
+          '20':'Delete Product',
+          '21':'Add Product'
+
         },
 
         // Persian or Farsi ==> fa
@@ -65,7 +72,10 @@ class Locale implements Translations {
           '15':'Created',
           '16':'Email',
           '17':'Email verified',
-          '18':'favorite'
+          '18':'favorite',
+          '19':'Admin',
+          '20':'Delete Product',
+          '21':'Add Product'
         }
       };
 }

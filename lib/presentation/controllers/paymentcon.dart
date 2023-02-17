@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unnecessary_brace_in_string_interps
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -48,6 +50,7 @@ class PaymentController extends GetxController {
         print("Unforeseen error: ${e}");
       }
     } catch (e) {
+      // ignore: 
       print("exception:$e");
     }
   }
@@ -70,6 +73,7 @@ class PaymentController extends GetxController {
           });
       return jsonDecode(response.body);
     } catch (err) {
+      // ignore: avoid_print
       print('err charging user: ${err.toString()}');
     }
   }

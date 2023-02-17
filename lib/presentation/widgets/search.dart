@@ -7,8 +7,9 @@ import 'package:online_store_app/data/firebase.dart';
 import 'package:sizer/sizer.dart';
 
 class Search extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final result;
-  const Search(this.result);
+  const Search(this.result, {super.key});
 
   @override
   State<Search> createState() => _SearchState();
@@ -16,6 +17,7 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
    addprod(){
+    // ignore: non_constant_identifier_names
     Map<String,String> DatatoSave={
        'name':users5[0]['name'],
        'price':users5[0]['price'],
@@ -47,12 +49,7 @@ class _SearchState extends State<Search> {
 
 
 
-@override
-  void initState() {
-    
-    // TODO: implement initState
-    super.initState();
-  }
+
   @override
   Widget build(BuildContext context) {
 

@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:online_store_app/presentation/screens/addproduct.dart';
-import 'package:online_store_app/presentation/screens/profilescreen.dart';
+import 'package:online_store_app/presentation/screens/deleteproduct.dart';
+
 import 'package:sizer/sizer.dart';
 
 import '../../core/components.dart';
@@ -84,8 +85,8 @@ class AdminScreen extends StatelessWidget {
                   // ignore: prefer_const_constructors
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
-                // Navigator.push(context,
-                //     MaterialPageRoute(builder: (context) =>  Profile1()));
+                 Navigator.push(context,
+                   MaterialPageRoute(builder: (context) =>  Deleteproduct()));
               },
             ),
 

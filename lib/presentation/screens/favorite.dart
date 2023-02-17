@@ -1,11 +1,10 @@
 
 
-import 'dart:developer';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:sizer/sizer.dart';
 
 class Favorite extends StatefulWidget {
@@ -71,7 +70,7 @@ final collection = FirebaseFirestore.instance.collection('favorite');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purple[900],
-        title: Text(
+        title: const Text(
           'Favorite',
           style: TextStyle(
             color: Colors.white,
@@ -84,6 +83,7 @@ final collection = FirebaseFirestore.instance.collection('favorite');
       body: Column(
         children: [
           Expanded(
+            // ignore: avoid_unnecessary_containers
             child: Container(
               child: ListView.separated(
                 shrinkWrap: true,
@@ -133,7 +133,7 @@ final collection = FirebaseFirestore.instance.collection('favorite');
                                       
                                     });
                                   },
-                                  icon: Icon(Icons.cancel),
+                                  icon: const Icon(Icons.cancel),
                                 ),
                               ),
                             ],

@@ -68,11 +68,13 @@ class _AddproductState extends State<Addproduct> {
       appBar: AppBar(
         title: const Text('Add Product'),
         centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 2, 32, 56),
       ),
+      // ignore: sized_box_for_whitespace
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Colors.blue[100],
+       
         child: Form(
             key: _formKey,
             child: SingleChildScrollView(
@@ -189,6 +191,7 @@ class _AddproductState extends State<Addproduct> {
                         return null;
                       // ignore: empty_catches
                       } catch (e) {}
+                      return null;
                     },
                   ),
                   
@@ -198,6 +201,7 @@ class _AddproductState extends State<Addproduct> {
                       String uniquename=DateTime.now().millisecondsSinceEpoch.toString();
                      ImagePicker imagePicker=ImagePicker();
                      XFile? file=await imagePicker.pickImage(source: ImageSource.gallery);
+                     // ignore: avoid_print
                      print(file?.path);
                      if (file==null)return; 
                        
@@ -209,6 +213,7 @@ class _AddproductState extends State<Addproduct> {
                      try {
                       await referenceimageupload.putFile(File(file!.path));
                        imageurl=await referenceimageupload.getDownloadURL();
+                       // ignore: avoid_print
                        print(imageurl);
                        
                      // ignore: empty_catches
@@ -247,6 +252,7 @@ class _AddproductState extends State<Addproduct> {
                         }
                         return null;
                       } catch (e) {}
+                      return null;
                     },
                   ),
                 

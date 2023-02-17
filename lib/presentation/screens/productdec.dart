@@ -3,7 +3,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:online_store_app/data/firebase.dart';
+
 import 'package:sizer/sizer.dart';
 
 class Productdec extends StatefulWidget {
@@ -19,6 +19,7 @@ class _ProductdecState extends State<Productdec> {
      
 
     addprod(){
+    // ignore: non_constant_identifier_names
     Map<String,String> DatatoSave={
        'name':widget.user['name'],
        'price':widget.user['price'],

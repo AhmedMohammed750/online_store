@@ -4,8 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:footer/footer.dart';
-import 'package:footer/footer_view.dart';
+
 import 'package:get/get.dart';
 import 'package:online_store_app/presentation/screens/category.dart';
 import 'package:online_store_app/presentation/screens/productdec.dart';
@@ -81,7 +80,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                       child: Text(
                     'select category:',
                     style: TextStyle(
-                        color: Color.fromARGB(255, 32, 135, 219),
+                        color: const Color.fromARGB(255, 32, 135, 219),
                         fontWeight: FontWeight.bold,
                         fontSize: 15.sp),
                   )),
@@ -239,6 +238,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                 onPressed: () async {
                                
                                   
+                                  // ignore: non_constant_identifier_names
                                   Map<String, String> DataToSave = {
                                     'name': '${users1[i]['name']}',
                                     'image': '${users1[i]['image']}',

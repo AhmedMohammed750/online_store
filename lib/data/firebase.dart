@@ -6,7 +6,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../presentation/widgets/search.dart';
 
 
 
@@ -31,6 +30,7 @@ var created=user?.email;
    
     try {
       await userref.get().then((value) =>
+       // ignore: avoid_function_literals_in_foreach_calls
        value.docs.forEach((element) {
             users2.add(element.data());
           }));
@@ -47,6 +47,7 @@ var created=user?.email;
 geterr(String res)async{
   users5=[];
       var resup=await userref.where('name',isEqualTo:res).get();
+      // ignore: avoid_function_literals_in_foreach_calls
       resup.docs.forEach((element) {
 
         

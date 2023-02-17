@@ -18,10 +18,10 @@ dividerColor: Colors.red,
 final darkTheme = ThemeData.dark().copyWith(
 
 primaryColor: Colors.blue,
-primaryIconTheme: IconThemeData(color: Colors.white),
-appBarTheme: AppBarTheme(),
-textTheme: TextTheme(bodyText1: TextStyle(color: Colors.white)),
-colorScheme: ColorScheme.dark(),
+primaryIconTheme: const IconThemeData(color: Colors.white),
+appBarTheme: const AppBarTheme(),
+textTheme: const TextTheme(bodyText1: TextStyle(color: Colors.white)),
+colorScheme: const ColorScheme.dark(),
 
 dividerColor: Colors.white54,
 

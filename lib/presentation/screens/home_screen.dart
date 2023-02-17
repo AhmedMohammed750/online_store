@@ -289,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -313,10 +313,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -333,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   try {
                      if (user?.email=='kosayalmansour@gmail.com') {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => AdminScreen(),));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AdminScreen(),));
 
                     
                   }
@@ -344,7 +344,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       dialogType: DialogType.error,
                                       body: const Center(
                                         child: Text(
-                                          'Has been added to favorite',
+                                          "Sorry, you aren't authorized to enter",
                                           style: TextStyle(
                                               fontStyle: FontStyle.italic),
                                         ),
@@ -368,10 +368,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -384,10 +384,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -479,7 +479,7 @@ class Costemsearch extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: Icon(Icons.arrow_back));
+        icon: const Icon(Icons.arrow_back));
   }
 
   @override
@@ -511,6 +511,7 @@ class Costemsearch extends SearchDelegate {
 
     return ListView.builder(
       itemBuilder: ((context, index) {
+        // ignore: prefer_typing_uninitialized_variables
         var result;
         result = matchQuery[index];
         return ListTile(
@@ -519,6 +520,7 @@ class Costemsearch extends SearchDelegate {
             onPressed: () async {
               await geterr(result);
               log(result);
+              // ignore: use_build_context_synchronously
               Navigator.push(
                   context,
                   MaterialPageRoute(

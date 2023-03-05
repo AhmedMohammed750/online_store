@@ -72,8 +72,9 @@ class PaymentController extends GetxController {
             'Content-Type': 'application/x-www-form-urlencoded'
           });
       return jsonDecode(response.body);
+    // ignore: duplicate_ignore,
     } catch (err) {
-      // ignore: avoid_print
+    
       print('err charging user: ${err.toString()}');
     }
   }

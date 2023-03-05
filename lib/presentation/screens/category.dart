@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:online_store_app/presentation/screens/home_screen.dart';
 
 import 'package:online_store_app/presentation/screens/productdec.dart';
 
@@ -42,6 +43,7 @@ class _CategoryState extends State<Category> {
 
   @override
   void initState() {
+    users1 = [];
 
     getdate();
 
@@ -57,7 +59,7 @@ class _CategoryState extends State<Category> {
           IconButton(
               onPressed: () {
                 users1 = [];
-                Navigator.of(context).pop();
+                Navigator.push(context,MaterialPageRoute(builder:(context) =>const HomeScreen(),));
               },
               icon: const Icon(Icons.close))
         ],

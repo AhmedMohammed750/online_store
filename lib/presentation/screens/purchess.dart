@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:sizer/sizer.dart';
 
@@ -18,7 +19,7 @@ class _PurchesState extends State<Purches> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Purchases'),centerTitle: true,
+      appBar: AppBar(title:  Text('9'.tr),centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -26,7 +27,7 @@ class _PurchesState extends State<Purches> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 8.h,),
-            Text('List of purchases',style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
+            Text('23'.tr,style: TextStyle(fontSize: 20.sp,fontWeight: FontWeight.bold),),
             SizedBox(height: 3.h,),
         Table(
         defaultColumnWidth: const FlexColumnWidth(1.0),

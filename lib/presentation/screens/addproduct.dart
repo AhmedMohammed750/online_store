@@ -251,6 +251,7 @@ class _AddproductState extends State<Addproduct> {
                           return 'must not be empty';
                         }
                         return null;
+                      // ignore: empty_catches
                       } catch (e) {}
                       return null;
                     },

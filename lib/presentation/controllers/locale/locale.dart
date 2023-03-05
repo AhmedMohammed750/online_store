@@ -25,7 +25,16 @@ class Locale implements Translations {
           '18':'المفضل',
           '19':'حساب المشرف',
           '20':'حذف المنتج',
-          '21':'اضافة المنتج'
+          '21':'اضافة المنتج',
+          '22':'اضافة الى سلة',
+          '23':'قائمة المشتريات',
+          '24':'اختر الفئة',
+          '25':'Add Category',
+          '26':'الفئة',
+          '27':'السعر',
+          '28':'الوصف',
+          '29':'الاسم',
+          '30':'تبقى فقط في المخزن'
         
         },
         'en': {
@@ -49,7 +58,16 @@ class Locale implements Translations {
           '18':'Favorite',
           '19':'Admin Account',
           '20':'Delete Product',
-          '21':'Add Product'
+          '21':'Add Product',
+          '22':'Add To Cart ',
+          '23':'List of purchases',
+          '24':'Select Category:',
+          '25':'Add Category',
+          '26':'category',
+          '27':'Price',
+          '28':'Description',
+          '29':'Name',
+          '30':' Only left in stock'
 
         },
 
@@ -66,16 +84,25 @@ class Locale implements Translations {
           '9': 'کڕینەکان',
           '10': 'باشترین شوێن بۆ کرینی بەرهەمەکانی تەکنەلۆژیا',
           '11': 'نرخ',
-          '12':'TOTAL',
-          '13':'PAYMENT',
-          '14':'Name',
-          '15':'Created',
-          '16':'Email',
-          '17':'Email verified',
-          '18':'favorite',
-          '19':'Admin',
-          '20':'Delete Product',
-          '21':'Add Product'
+          '12':'کۆی گشتی',
+          '13':'پارەدان',
+          '14':'ناو',
+          '15':'دروستکردن',
+          '16':'ئیمەیل',
+          '17':'پشتراستکردنەوەی ئیمەیل',
+          '18':'دڵخوازەکان',
+          '19':'ئادمین',
+          '20':'سرینەوەی بەرهەم',
+          '21':'زیادکردن بەرهەم',
+          '22':'زیادکردن بۆ سەبەتە ',
+          '23':'لیستی کڕینەکان',
+          '24':'جۆر دیاریبکە:',
+          '25':'Add Category',
+          '26':'category',
+          '27':'Price',
+          '28':'Description',
+          '29':'Name',
+          '30':' Only left in stock'
         }
       };
 }

@@ -14,7 +14,7 @@ import 'package:online_store_app/data/firebase.dart';
 import 'package:online_store_app/presentation/screens/admin_screen.dart';
 import 'package:online_store_app/presentation/screens/cartscreen.dart';
 import 'package:online_store_app/presentation/screens/favorite.dart';
-import 'package:online_store_app/presentation/screens/productdec.dart';
+
 import 'package:online_store_app/presentation/screens/profilescreen.dart';
 import 'package:online_store_app/presentation/screens/purchess.dart';
 import 'package:online_store_app/presentation/screens/welcome/login_screen.dart';
@@ -73,11 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    users1 = [];
     getdate();
 
     getdate1();
 
-    // TODO: implement initState
+
     super.initState();
   }
 
@@ -112,7 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 // ignore: use_build_context_synchronously
 
-                navigateAndFinish(context, LoginScreen());
+                // ignore: use_build_context_synchronously
+                navigateAndFinish(context, const LoginScreen());
               },
               icon: const Icon(Icons.login_rounded),
             ),
@@ -180,12 +182,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) => const Purches()));
                   },
                   subtitle:
-                      Icon(Icons.card_travel_sharp, color: GFColors.DANGER)),
+                      const Icon(Icons.card_travel_sharp, color: GFColors.DANGER)),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -206,12 +208,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         MaterialPageRoute(
                             builder: (context) => const Favorite()));
                   },
-                  subtitle: Icon(Icons.favorite, color: GFColors.DANGER)),
+                  subtitle: const Icon(Icons.favorite, color: GFColors.DANGER)),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -234,13 +236,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(
                           builder: (context) => const HomeScreen()));
                 },
-                subtitle: Icon(Icons.home, color: GFColors.DANGER),
+                subtitle: const Icon(Icons.home, color: GFColors.DANGER),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -257,16 +259,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 20)),
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile1()));
+                      MaterialPageRoute(builder: (context) => const Profile1()));
                 },
                 subtitle: const Icon(Icons.account_box_rounded,
                     color: GFColors.DANGER),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -286,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 subtitle: const Icon(Icons.email, color: GFColors.DANGER),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 20),
+                margin: const EdgeInsets.symmetric(vertical: 20),
                 height: 2,
                 width: double.infinity,
                 decoration: const BoxDecoration(

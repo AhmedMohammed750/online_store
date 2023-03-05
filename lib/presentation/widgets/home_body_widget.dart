@@ -1,5 +1,7 @@
 // Packages
 
+import 'dart:developer';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +28,9 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
     'https://firebasestorage.googleapis.com/v0/b/online-store-50ede.appspot.com/o/image%20orginal%2F3.jpg?alt=media&token=276d0c30-04c0-4e44-b83b-5ee6cdb62a77',
   ];
   String? valuechoos;
-  List item = [
-    'laptop',
-    'mobile',
-    'printer',
-    'headset',
-    'mouse',
-    'technology tools'
+  List items = [
   ];
+  List item=[];
 
   getdate() async {
     try {
@@ -52,10 +49,34 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
       // ignore: empty_catches
     } catch (e) {}
   }
+  getcategory() async {
+    try {
+      CollectionReference userref =
+          FirebaseFirestore.instance.collection('category');
+      await userref.get().then((value) => {
+            // ignore: avoid_function_literals_in_foreach_calls
+            value..docs.forEach((element) {
+              setState(() {
+                
+                items.add(element.data());
+                item.add(items[0]['category']);
+                items=[];
+                print(item);
+               
+              });
+              
+            })
+          });
+
+      // ignore: empty_catches
+    } catch (e) {}
+  }
+
 
   @override
   void initState() {
     getdate();
+    getcategory();
 
     super.initState();
   }
@@ -78,7 +99,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                   isExpanded: true,
                   hint: Center(
                       child: Text(
-                    'select category:',
+                    '24'.tr,
                     style: TextStyle(
                         color: const Color.fromARGB(255, 32, 135, 219),
                         fontWeight: FontWeight.bold,
@@ -99,7 +120,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                       valuechoos = (newvalue as String?)!;
                       getdate();
 
-                      Navigator.push(
+                      Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                               builder: ((context) => Category(newvalue))));
@@ -248,6 +269,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                                     
                                   };
                                   
+                                     // ignore: unused_local_variable
                                      var ds= await FirebaseFirestore.instance
                                       .collection('favorite')
                                       .add(DataToSave);

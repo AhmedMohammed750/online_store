@@ -9,6 +9,7 @@ import 'package:online_store_app/presentation/screens/deleteproduct.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../core/components.dart';
+import 'add category.dart';
 import 'home_screen.dart';
 import 'welcome/login_screen.dart';
 
@@ -19,7 +20,7 @@ class AdminScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 5, 2, 56),
+        backgroundColor: const Color.fromARGB(255, 5, 2, 56),
         title: const Text('Admin Screen'),
         centerTitle: true,
       actions: [IconButton(
@@ -27,7 +28,7 @@ class AdminScreen extends StatelessWidget {
               await FirebaseAuth.instance.signOut();
 
               // ignore: use_build_context_synchronously
-              navigateAndFinish(context, LoginScreen());
+              navigateAndFinish(context, const LoginScreen());
             },
             icon: const Icon(Icons.login_rounded),
           ),],
@@ -86,7 +87,16 @@ class AdminScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               onTap: () {
                  Navigator.push(context,
-                   MaterialPageRoute(builder: (context) =>  Deleteproduct()));
+                   MaterialPageRoute(builder: (context) =>  const Deleteproduct()));
+              },
+            ),
+                        ListTile(
+              title: Text('25'.tr,
+                  // ignore: prefer_const_constructors
+                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              onTap: () {
+                 Navigator.push(context,
+                   MaterialPageRoute(builder: (context) =>  const Add_Category()));
               },
             ),
 
@@ -96,7 +106,7 @@ class AdminScreen extends StatelessWidget {
                 SizedBox(height: 10.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     
                   ],
                 )
@@ -124,5 +134,6 @@ class AdminScreen extends StatelessWidget {
     ));
   }
   
+  // ignore: unused_element
   void _launchUrl2() {}
 }

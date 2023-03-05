@@ -68,6 +68,7 @@ class _CartState extends State<Cart> {
     for (var i = 0; i < users1.length; i++) {
       try{
       result = result + int.parse(users1[i]['price']);
+      // ignore: empty_catches
       }catch(e){}
     }
     return result;
@@ -105,6 +106,7 @@ final collection = FirebaseFirestore.instance.collection('purchases');
       body: Column(
         children: [
           Expanded(
+            // ignore: avoid_unnecessary_containers
             child: Container(
               child: ListView.separated(
                 shrinkWrap: true,
@@ -158,10 +160,11 @@ final collection = FirebaseFirestore.instance.collection('purchases');
                                     setState(() {
                                      delet('${users1[index]['name']}');
                                       users1.removeAt(index);
+                                      // ignore: avoid_print
                                       print(userref.id);
                                     });
                                   },
-                                  icon: Icon(Icons.cancel),
+                                  icon: const Icon(Icons.cancel),
                                 ),
                               ),
                             ],
@@ -206,10 +209,11 @@ final collection = FirebaseFirestore.instance.collection('purchases');
                   TextButton.icon(
                     onPressed: () async{
                       showDialog(context: context, builder:(context){
-                        return Center(child: CircularProgressIndicator(),);
+                        return const Center(child: CircularProgressIndicator(),);
                       });
                       
                       await makePayment();
+                      // ignore: use_build_context_synchronously
                       Navigator.of(context).pop();
                       
                        
@@ -223,7 +227,7 @@ final collection = FirebaseFirestore.instance.collection('purchases');
                     ),
                     label: Text(
                       '13'.tr,
-                      style: TextStyle(color: Colors.red),
+                      style: const TextStyle(color: Colors.red),
                     ),
                   )
                 ],
@@ -258,6 +262,7 @@ Future<void> makePayment() async {
       ///now finally display payment sheeet
       displayPaymentSheet();
     } catch (e, s) {
+      // ignore: avoid_print
       print('exception:$e$s');
     }
   }
@@ -267,6 +272,7 @@ displayPaymentSheet() async {
       await Stripe.instance.presentPaymentSheet().then((value) {
        
        if (paymentIntent!["status"]=="succeeded") {
+        // ignore: avoid_print
         print('hello ahmed your done');
          
        }
@@ -280,9 +286,11 @@ displayPaymentSheet() async {
       });
     } 
     on StripeException catch (e) {
+    // ignore: avoid_print
     print('Error is:---> $e'); 
     } 
     catch (e) {
+      // ignore: avoid_print
       print('$e');
     }
   }

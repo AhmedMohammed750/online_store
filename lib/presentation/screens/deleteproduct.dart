@@ -181,26 +181,7 @@ final collection = FirebaseFirestore.instance.collection('prodects');
                       ),
                     ),
                   ),
-                  Positioned(
-                    bottom: 0.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 5.0,
-                        horizontal: 10.0,
-                      ),
-                      child: Text(
-                        'DELETE ',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.red[900],
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
+                  
                 ],
               ));
             }),

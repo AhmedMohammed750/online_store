@@ -2,9 +2,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+
+// ignore: camel_case_types
 class Add_Category extends StatefulWidget {
   const Add_Category({super.key});
 
@@ -12,6 +12,7 @@ class Add_Category extends StatefulWidget {
   State<Add_Category> createState() => _Add_CategoryState();
 }
 
+// ignore: camel_case_types
 class _Add_CategoryState extends State<Add_Category> {
  final _formKey = GlobalKey<FormState>();
   final _categoryNameController = TextEditingController();
@@ -38,6 +39,7 @@ class _Add_CategoryState extends State<Add_Category> {
           ).show();
        
       } catch (e) {
+        // ignore: avoid_print
         print('Error adding category: $e');
       }
     }
@@ -49,10 +51,11 @@ class _Add_CategoryState extends State<Add_Category> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        // ignore: prefer_const_constructors
         title: Text('Add Category'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
@@ -60,7 +63,7 @@ class _Add_CategoryState extends State<Add_Category> {
             children: [
               TextFormField(
                 controller: _categoryNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Category Name',
                 ),
                 validator: (value) {
@@ -70,10 +73,10 @@ class _Add_CategoryState extends State<Add_Category> {
                   return null;
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _addCategory,
-                child: Text('Add Category'),
+                child: const Text('Add Category'),
               ),
             ],
           ),

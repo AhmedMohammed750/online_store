@@ -22,6 +22,7 @@ class _ProductdecState extends State<Productdec> {
       'name': widget.user['name'],
       'price': widget.user['price'],
       'image': widget.user['image'],
+      'description':widget.user['description'],
       'id': ''
     };
     FirebaseFirestore.instance.collection('purchases').add(DatatoSave);

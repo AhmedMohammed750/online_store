@@ -105,7 +105,7 @@ final collection = FirebaseFirestore.instance.collection('prodects');
                                     ],
                                   );
                                 },
-                              ).then((value) {
+                               ).then((value) {
                                 if (value == true) {
                                   // code to delete item goes here
                                 }

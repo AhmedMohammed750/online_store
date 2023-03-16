@@ -179,7 +179,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Purches()));
+                            builder: (context) =>  Purches()));
                   },
                   subtitle:
                       const Icon(Icons.card_travel_sharp, color: GFColors.DANGER)),

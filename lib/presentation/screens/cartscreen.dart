@@ -3,6 +3,8 @@
 
 
 
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +35,7 @@ class _CartState extends State<Cart> {
   DocumentReference documentReference = FirebaseFirestore.instance.collection('purchases').doc(); 
   
     var  send=false;
+  
 
   getdate() async {
     
@@ -68,6 +71,26 @@ class _CartState extends State<Cart> {
     for (var i = 0; i < users1.length; i++) {
       try{
       result = result + int.parse(users1[i]['price']);
+      // ignore: empty_catches
+      }catch(e){}
+    }
+    return result;
+  }
+    resut1() {
+    var result = '';
+    for (var i = 0; i < users1.length; i++) {
+      try{
+      result = result +users1[i]['name']+'+' ;
+      // ignore: empty_catches
+      }catch(e){}
+    }
+    return result;
+  }
+      resut2() {
+    var result = '';
+    for (var i = 0; i < users1.length; i++) {
+      try{
+      result = result  + users1[i]['description']+'+';
       // ignore: empty_catches
       }catch(e){}
     }
@@ -157,6 +180,7 @@ final collection = FirebaseFirestore.instance.collection('purchases');
                                 alignment: Alignment.topRight,
                                 child: IconButton(
                                   onPressed: () {
+                                    // ignore: duplicate_ignore
                                     setState(() {
                                      delet('${users1[index]['name']}');
                                       users1.removeAt(index);
@@ -241,7 +265,7 @@ final collection = FirebaseFirestore.instance.collection('purchases');
 
   Future<void> makePayment() async {
     try {
-      paymentIntent = await createPaymentIntent('10', 'USD'); 
+      paymentIntent = await createPaymentIntent(' ${resut().toString()} ', 'USD'); 
       //Payment Sheet 
       await Stripe.instance.initPaymentSheet(
           paymentSheetParameters: SetupPaymentSheetParameters(
@@ -249,7 +273,7 @@ final collection = FirebaseFirestore.instance.collection('purchases');
               // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
               // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
               style: ThemeMode.dark,
-              merchantDisplayName: 'Adnan')).then((value){
+              merchantDisplayName: 'Ahmad')).then((value){
       });
 
 
@@ -259,12 +283,24 @@ final collection = FirebaseFirestore.instance.collection('purchases');
       print('exception:$e$s');
     }
   }
-
+  
   displayPaymentSheet() async {
-
+    try{
     try {
       await Stripe.instance.presentPaymentSheet(
           ).then((value){
+           
+    // ignore: non_constant_identifier_names
+    Map<String, String> DatatoSave = {
+      'name':'${resut1().toString()}',
+      'description':'${resut2().toString()}',
+      'price':'${resut().toString()}'
+      
+     
+    };
+    FirebaseFirestore.instance.collection('purchess').add(DatatoSave);
+             
+
         showDialog(
           context: context,
           builder: (_) => AlertDialog(
@@ -273,10 +309,13 @@ final collection = FirebaseFirestore.instance.collection('purchases');
               children: [
                 Row(
                   children: const [
+                    
+                    
                     Icon(Icons.check_circle, color: Colors.green,),
                     Text("paid successfully"),
-                  ];
-                );
+
+                  ]
+                ),
               ],
             ), 
           ));
@@ -299,10 +338,14 @@ final collection = FirebaseFirestore.instance.collection('purchases');
     } catch (e) {
       print('$e');
     }
+    } catch(e){
+      print(e);
+    }
   }
 
   //  Future<Map<String, dynamic>>
   createPaymentIntent(String amount, String currency) async {
+    // ignore: duplicate_ignore
     try {
       Map<String, dynamic> body = {
         'amount': calculateAmount(amount),
@@ -318,11 +361,11 @@ final collection = FirebaseFirestore.instance.collection('purchases');
           },
           body: body,
           );
-      // ignore: avoid_print
+      
       print('Payment Intent Body->>> ${response.body.toString()}');
       return jsonDecode(response.body);
     } catch (err) {
-      // ignore: avoid_print
+     
       print('err charging user: ${err.toString()}');
     }
   }

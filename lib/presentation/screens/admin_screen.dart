@@ -10,6 +10,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../core/components.dart';
 import 'add category.dart';
+import 'adminpurch.dart';
 import 'home_screen.dart';
 import 'welcome/login_screen.dart';
 
@@ -99,6 +100,16 @@ class AdminScreen extends StatelessWidget {
                    MaterialPageRoute(builder: (context) =>  const Add_Category()));
               },
             ),
+             ListTile(
+              title: Text('9'.tr,
+                  // ignore: prefer_const_constructors
+                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              onTap: () {
+                 Navigator.push(context,
+                   MaterialPageRoute(builder: (context) => Adiminpurchess()));
+              },
+            ),
+
 
     
             Column(
